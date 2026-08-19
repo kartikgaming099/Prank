@@ -34,39 +34,41 @@
   .box {
     background: #111;
     border: 2px solid #ff0000;
-    border-radius: 10px;
-    padding: 30px 25px;
-    max-width: 320px;
+    border-radius: 12px;
+    padding: 40px 35px;
+    width: 90%;
+    max-width: 480px;
     text-align: center;
-    box-shadow: 0 0 30px rgba(255,0,0,0.4);
+    box-shadow: 0 0 35px rgba(255,0,0,0.45);
     animation: pop 0.25s ease-out;
   }
   .box.joke {
     border-color: #00ff66;
-    box-shadow: 0 0 30px rgba(0,255,102,0.4);
+    box-shadow: 0 0 35px rgba(0,255,102,0.45);
   }
   .box h2 {
-    margin: 0 0 10px;
-    font-size: 1.4rem;
+    margin: 0 0 16px;
+    font-size: 1.85rem;
     color: #ff3333;
   }
   .box.joke h2 { color: #00ff66; }
   .box p {
     color: #ccc;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
+    line-height: 1.5;
     margin: 0;
   }
   .box button {
     background: #ff0000;
     color: #fff;
     border: none;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
     font-family: inherit;
-    margin-top: 20px;
+    margin-top: 25px;
   }
   .box.joke button { background: #00aa44; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
