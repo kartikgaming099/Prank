@@ -4,32 +4,116 @@
 <meta charset="UTF-8">
 <title>Loading...</title>
 <style>
+  * { box-sizing: border-box; }
   body {
-    background: #000;
+    background: #0a0a0a;
     color: #0f0;
-    font-family: monospace;
+    font-family: 'Courier New', monospace;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
-    font-size: 1.2rem;
+    overflow: hidden;
   }
+  #msg {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    animation: fadeIn 0.2s ease-in;
+  }
+  .box {
+    background: #111;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 30px 25px;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255,0,0,0.4);
+    animation: pop 0.25s ease-out;
+  }
+  .box.joke {
+    border-color: #00ff66;
+    box-shadow: 0 0 30px rgba(0,255,102,0.4);
+  }
+  .box h2 {
+    margin: 0 0 10px;
+    font-size: 1.4rem;
+    color: #ff3333;
+  }
+  .box.joke h2 { color: #00ff66; }
+  .box p {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin: 0 0 20px;
+  }
+  .box button {
+    background: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .box.joke button { background: #00aa44; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 </style>
 </head>
 <body>
 <p id="msg">Connecting...</p>
 
+<div class="overlay" id="overlay1">
+  <div class="box">
+    <h2>⚠ YOU ARE HACKED</h2>
+    <p>Your device has been compromised. Unauthorized access detected.</p>
+    <button onclick="showJoke()">OK</button>
+  </div>
+</div>
+
+<div class="overlay" id="overlay2" style="display:none;">
+  <div class="box joke">
+    <h2>😄 Relax!</h2>
+    <p>Don't worry, it was just a joke. Redirecting you now...</p>
+    <button onclick="redirect()">Continue</button>
+  </div>
+</div>
+
 <script>
   // CHANGE THIS to your actual Discord invite link
-  const discordLink = "https://discord.gg/b557fuZbF";
+  const discordLink = "https://discord.gg/YOUR_INVITE_CODE";
 
-  window.onload = function() {
-    alert("You are hacked");
-    alert("Don't worry, it was just a joke 😄");
+  function showJoke() {
+    document.getElementById("overlay1").style.display = "none";
+    document.getElementById("overlay2").style.display = "flex";
+  }
+
+  function redirect() {
     document.getElementById("msg").textContent = "Redirecting to Discord...";
     window.location.href = discordLink;
-  };
+  }
+
+  // auto-advance after a short delay too, in case they don't tap
+  setTimeout(function() {
+    if (document.getElementById("overlay1").style.display !== "none") showJoke();
+  }, 2500);
+  setTimeout(function() {
+    if (document.getElementById("overlay2").style.display !== "none" || true) {
+      // only auto-redirect if joke box is currently showing
+    }
+  }, 5000);
 </script>
 </body>
 </html>
