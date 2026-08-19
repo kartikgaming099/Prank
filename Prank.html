@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Loading...</title>
+<style>
+  body {
+    background: #000;
+    color: #0f0;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+</style>
+</head>
+<body>
+<p id="msg">Connecting...</p>
+
+<script>
+  // CHANGE THIS to your actual Discord invite link
+  const discordLink = "https://discord.gg/b557fuZbF";
+
+  window.onload = function() {
+    alert("You are hacked");
+    alert("Don't worry, it was just a joke 😄");
+    document.getElementById("msg").textContent = "Redirecting to Discord...";
+    window.location.href = discordLink;
+  };
+</script>
+</body>
+</html>
